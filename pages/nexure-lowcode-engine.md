@@ -10,9 +10,9 @@ Nexus is a low-code platform that enables users to build web applications. When 
 
 ## Challenges
 
-1. **Resource management issues** - Resources are not well managed especially when there are multiple low-code editing tabs.
+1. **Resource management issues** - Memory leaks and unmanaged resources were common, especially when multiple low-code editing tabs were open.
 2. **Serialization complexity** - The data serialization mechanism was inefficient and obscure.
-3. **Scalability concerns** - The highly coupled code hindered the ability to extend the platform easily.
+3. **Scalability concerns** - The tightly coupled architecture hindered the ability to extend the platform easily.
 
 ## Solutions and Refactoring Process
 
