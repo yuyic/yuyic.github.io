@@ -2,3 +2,8 @@
 ---
 
 @import "jekyll-theme-slate";
+
+pre {
+    max-height: 400px;
+    overflow: auto;
+}
