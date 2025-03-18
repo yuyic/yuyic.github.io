@@ -38,12 +38,13 @@ class CodeMain {
         return stage;
       }
     }
-    // Initialize services for the container
+
     const services = new ServiceCollection();
     services.set(ISerializeService, new SyncDescriptor(SerializeService));
     services.set(IComponentService, new SyncDescriptor(ComponentService, [this]));
     services.set(IPropertyService, new SyncDescriptor(PropertyService));
 
+    // Set up services in the DI container.
     const instantiation = new InstantiationService(services, true);
 
     return instantiation.invokeFunction((accessor) => {
