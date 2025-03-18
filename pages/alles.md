@@ -12,7 +12,7 @@ Alles is an AI annotation tool integrated with [Cyclone RPA](https://en.cyclone-
 
 The challenge arose with rendering performance, especially when handling tens of thousands of shapes. Every edit triggered collision detection between shapes, leading to intensive computation and significant performance bottlenecks.
 
-## Solutions and Refactoring Process
+## Solutions
 
 To address this issue, I utilized Rust-WASM to handle the data changes of shapes, leaving JavaScript solely responsible for rendering the results. This solution was implemented through `wasm_bindgen`.
 
