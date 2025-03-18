@@ -6,7 +6,7 @@ layout: default
 
 ## Overview
 
-Alles is an AI annotation tool integrated with [Cyclone RPA](https://en.cyclone-robotics.com/), responsible for recognizing hotspot areas from screenshots. These hotspot areas are displayed as irregularly shaped strokes in an HTML Canvas, which are editable, movable, and groupable.
+Alles is an AI annotation tool integrated with [Cyclone RPA](https://en.cyclone-robotics.com/){:target="_blank"}, responsible for recognizing hotspot areas from screenshots. These hotspot areas are displayed as irregularly shaped strokes in an HTML Canvas, which are editable, movable, and groupable.
 
 ## Challenges
 

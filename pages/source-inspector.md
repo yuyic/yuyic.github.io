@@ -6,7 +6,7 @@ layout: default
 
 ## Overview
 
-[Source-inspector](https://github.com/yuyic/source-inspector) is a tool used for tracing source code by linking it to corresponding HTML tags. I originally obtained this idea through discussions with a counterpart from ByteDance, and then I implemented it for Webpack and Vite. Although now another repository [code-inspector](https://github.com/zh-lx/code-inspector) has implemented a more robust solution, I still believe the implementation of this project is worth sharing.
+[Source-inspector](https://github.com/yuyic/source-inspector){:target="_blank"} is a tool used for tracing source code by linking it to corresponding HTML tags. I originally obtained this idea through discussions with a counterpart from ByteDance, and then I implemented it for Webpack and Vite. Although now another repository [code-inspector](https://github.com/zh-lx/code-inspector){:target="_blank"} has implemented a more robust solution, I still believe the implementation of this project is worth sharing.
 
 ## Challenges
 
