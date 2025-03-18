@@ -62,7 +62,7 @@ function parseNodeInfo(node) {
         column: loc.start?.column || 0, // Get start column number
     };
 }
-
+{% raw %}
 /**
  * Babel plugin to process React code and add dataset attributes
  * @param {string} source - Input React source code
@@ -72,6 +72,7 @@ function parseNodeInfo(node) {
  * }} options - Configuration options with a factory method to create data attributes.
  * @returns {string} - Transformed code
  */
+{% endraw %}
 module.exports = function reactDataset(source, options) {
     const ast = parseModule(source); // Parse source code into AST
 
@@ -180,6 +181,7 @@ module.exports = function reactDataset(source, options) {
 
 const { parse, transform } = require("@vue/compiler-dom"); 
 const MagicString = require("magic-string"); 
+{% raw %}
 /**
  * Vue plugin to process templates and add dataset attributes.
  * @param {string} source - Input Vue template source code.
@@ -189,6 +191,7 @@ const MagicString = require("magic-string");
  * }} options - Configuration options with a factory method to create data attributes.
  * @returns {string} - Transformed code.
  */
+{% endraw %}
 module.exports = function vueDataset(source, options) {
     const ast = parse(source); // Parse source code into AST
     const magic = new MagicString(source); // Create a modifiable string with position tracking
