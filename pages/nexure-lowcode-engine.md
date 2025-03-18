@@ -6,7 +6,7 @@ layout: default
 
 ## Overview
 
-Nexus is a low-code platform that enables users to build web applications. When I joined the team, it had already released an alpha version, but it was plagued with numerous bugs, and the code was highly coupled, making bug fixes time-consuming due to the difficulty of tracing errors. After thorough discussions with the team, we decided to refactor the project. The core logic was abstracted into an independent engine, while Vue was solely responsible for rendering the UI.
+Nexus is a low-code platform that enables users to build web applications. As the primary developer of this project, when I joined the team, it had already released an alpha version, but it was plagued with numerous bugs, and the code was highly coupled, making bug fixes time-consuming due to the difficulty of tracing errors. To resolve these issues, I refactored the core logic, abstracting it into an independent engine, while Vue handled the UI rendering.
 
 ## Challenges
 
@@ -321,7 +321,7 @@ The refactoring of Nexus led to significant improvements:
    - Implemented the **disposable pattern**, ensuring resources are released effectively when no longer needed and improving overall performance.
 
 3. **Serialization**:  
-   - Introduced a **serialization service**, reducing serialization complexity and enhancing usability.
+   - Developed a **serialization service**, reducing serialization complexity and enhancing usability.
 
 4. **Data Binding**:  
    - Enabled seamless two-way binding with the `@bind` decorator, simplifying state management.
