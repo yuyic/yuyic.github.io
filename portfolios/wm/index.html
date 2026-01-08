@@ -1,0 +1,185 @@
+<!Doctype html>
+<html>
+  <head>
+    <title>17年，最后一件要知道的事</title>
+    <meta charSet="utf-8" />
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no,email=no"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <style>
+      #logo{
+        position: absolute;
+        top:50%;
+        left: 50%;
+        width: 230px;
+        height: 230px;
+        margin: -115px 0 0 -115px;
+      }
+      #logoRipple{
+        position: absolute;
+        top:50%;
+        left: 50%;
+      }
+      #logoRipple img{
+        width: 230px;
+        height: 230px;
+        display: block;
+        margin: -115px 0 0 -115px;
+      }
+      #qrcode{
+        position: absolute;
+        bottom:20px;
+        left:50%;
+        width: 125px;
+        margin-left: -63px;
+        display: none;
+      }
+      #qrcode img{
+        width: 100%;
+      }
+      .shareicon{
+        position: absolute;
+        display: none;
+      }
+    </style>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/createjs.min.js"></script>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/zepto.touch.js"></script>
+    <!-- <script src="js/stats.min.js"></script> -->
+    <script src="js/pixi.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+    <script>
+    var shareMsg = ["17年，最走心的AI声音","呆子，悟空都发现暗物质了，你还不来","17年，最后一件要知道的事","继引力波以后的又一波"][ ~~(Math.random()*4)];
+
+    // $.ajax({
+    //   url:"http://wm.morn-tech.com/weixin/getSignPackage.php",
+    //   type:"GET",
+    //   dataType:"json",
+    //   success:function(res){
+    //     wx.config({
+    //       debug: false,
+    //       appId: res.appId,
+    //       timestamp: res.timestamp,
+    //       nonceStr: res.nonceStr,
+    //       signature: res.signature,
+    //       rawString: res.rawString,
+    //       jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline', 'hideOptionMenu']
+    //     });
+    //   }
+    // });
+    wx.ready(function(){
+      wx.onMenuShareAppMessage({
+          title: shareMsg,
+          desc: "你有一份炫破天际的邀请请查收",
+          // link: getShareLink(),
+          imgUrl: "http://" + location.host + "/assets/share.jpg",
+          success: function () {
+
+          },
+          cancel: function () {
+          }
+      });
+      wx.onMenuShareTimeline({
+          title: shareMsg,
+          desc: "你有一份炫破天际的邀请请查收",
+          // link: getShareLink(),
+          imgUrl: "http://" + location.host + "/assets/share.jpg",
+          success: function () {
+
+          },
+          cancel: function () {
+          }
+      });
+    });
+    wx.error(function(res){
+        //  alert(res.errMsg);
+    });
+        var imagePath = '';
+        document.addEventListener('DOMContentLoaded',function (){
+            function audioAutoPlay(){
+                var audio_ = document.getElementById('bgm');
+                    audio_.play();
+                document.addEventListener("WeixinJSBridgeReady", function () {
+                        audio_.play();
+                }, false);
+            }
+            audioAutoPlay();
+        });
+    </script>
+
+
+  </head>
+  <body>
+    <div class="shareicon">
+      <img src="assets/share.jpg" width="400" height="400" />
+    </div>
+    <audio src="assets/bgm.mp3" autoplay crossorigin="anonymous" id="bgm" preload="auto" loop></audio>
+
+    <div class="loading section displayNone">
+      <div class="parts">
+        <div class="spin"></div>
+      </div>
+    </div>
+
+    <div class="intro section" style="display:none;">
+      <div class="button-go"></div>
+    </div>
+
+
+    <div class="voice on"></div>
+
+    <div id="three"></div>
+    <div id="logo"></div>
+    <div id="logoRipple" class="displayNone"><img id="ripple" src="assets/logo-ripple.png" alt=""/></div>
+    <div id="qrcode"><img src="assets/qrcode.png?r=1" alt=""/></div>
+
+    <div id="ROT"><div class="ico"><b></b></div><p>为了更好的体验，请使用竖屏浏览</p></div></div>
+    <script src="js/main-pixi.js"></script>
+    <script>
+    (function () {
+    var _overlay = document.getElementById('three');
+    var _clientY = null; // remember Y position on touch start
+
+    _overlay.addEventListener('touchstart', function (event) {
+        if (event.targetTouches.length === 1) {
+            _clientY = event.targetTouches[0].clientY;
+        }
+    }, false);
+
+    _overlay.addEventListener('touchmove', function (event) {
+        if (event.targetTouches.length === 1) {
+            disableRubberBand(event);
+        }
+    }, false);
+
+    function disableRubberBand(event) {
+        var clientY = event.targetTouches[0].clientY - _clientY;
+
+        if (_overlay.scrollTop === 0 && clientY > 0) {
+            // element is at the top of its scroll
+            event.preventDefault();
+        }
+
+        if (isOverlayTotallyScrolled() && clientY < 0) {
+            //element is at the top of its scroll
+            event.preventDefault();
+        }
+    }
+
+    function isOverlayTotallyScrolled() {
+        // https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight#Problems_and_solutions
+        return _overlay.scrollHeight - _overlay.scrollTop <= _overlay.clientHeight;
+    }
+}())
+    </script>
+  </body>
+</html>
